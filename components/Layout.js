@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Header from "./Header";
 
 /**
  * Custom layout component that allows you to create a custom head
@@ -17,6 +18,7 @@ export default function Layout({ title, keywords, description, children }) {
         <meta name="description" content={description} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Header />
       <main className="container mx-auto my-7">{children}</main>
     </div>
   );
