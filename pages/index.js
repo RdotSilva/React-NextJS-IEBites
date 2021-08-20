@@ -3,6 +3,7 @@ import path from "path";
 import Link from "next/link";
 import Layout from "../components/Layout";
 import matter from "gray-matter";
+import Post from "../components/Post";
 
 export default function HomePage({ blogPosts }) {
   return (
@@ -10,7 +11,7 @@ export default function HomePage({ blogPosts }) {
       <h1 className="text-5xl border-b-4 p-5 font-bold">Latest Posts</h1>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
         {blogPosts.map((post, index) => (
-          <h3>{post.frontmatter.title}</h3>
+          <Post key={index} post={post} />
         ))}
       </div>
       <Link href="/blog">
