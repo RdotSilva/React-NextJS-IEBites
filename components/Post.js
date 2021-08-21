@@ -17,6 +17,14 @@ export default function Post({ post }) {
         </span>
         <div>{post.frontmatter.category}</div>
       </div>
+      <div className="mt-2">
+        <Link href={`/blog/${post.slug}`}>
+          <a className="text-2xl text-gray-700 font-bold hover:underline">
+            {post.frontmatter.title}
+          </a>
+        </Link>
+        <p className="mt-2 text-gray-600">{post.frontmatter.excerpt}</p>
+      </div>
     </div>
   );
 }
