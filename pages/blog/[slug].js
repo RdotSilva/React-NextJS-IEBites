@@ -9,7 +9,7 @@ export default function PostPage() {
 /**
  * Set the path based on slug in markdown file
  */
-export async function getStaticPaths({ frontmatter, content, slug }) {
+export async function getStaticPaths() {
   const markdownFiles = fs.readdirSync(path.join("posts"));
 
   const paths = markdownFiles.map((filename) => ({
