@@ -31,6 +31,9 @@ export default function PostPage({
           </div>
           <div className="mr-4">{date}</div>
         </div>
+        <div className="blog-text mt-2">
+          <div dangerouslySetInnerHTML={{ __html: marked(content) }}></div>
+        </div>
       </div>
     </Layout>
   );
