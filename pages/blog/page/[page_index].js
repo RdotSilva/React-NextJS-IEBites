@@ -4,6 +4,7 @@ import Layout from "../../../components/Layout";
 import matter from "gray-matter";
 import Post from "../../../components/Post";
 import { sortByDate } from "../../../utils";
+import { POSTS_PER_PAGE } from "../../../config";
 
 /**
  * Main Blog component used to show all blog posts
@@ -19,6 +20,25 @@ export default function BlogPage({ blogPosts }) {
       </div>
     </Layout>
   );
+}
+
+export async function getStaticPaths() {
+  const markdownFiles = fs.readdirSync(path.join("posts"));
+
+  const numPages = Math.ceil(markdownFiles.length / POSTS_PER_PAGE);
+
+  let paths = [];
+
+  for (let i = 1; i <= numPages; i++) {
+    paths.push({
+      params: { page_index: i.toString() },
+    });
+  }
+
+  return {
+    paths,
+    fallback: false,
+  };
 }
 
 /**
