@@ -22,6 +22,9 @@ export default function BlogPage({ blogPosts }) {
   );
 }
 
+/**
+ * Generate pagination paths for blog posts based on number of files in the posts folder
+ */
 export async function getStaticPaths() {
   const markdownFiles = fs.readdirSync(path.join("posts"));
 
@@ -44,7 +47,9 @@ export async function getStaticPaths() {
 /**
  * Parse markdown files into blog posts objects and adds blog posts to props
  */
-export async function getStaticProps() {
+export async function getStaticProps({ params }) {
+  const page = parseInt((params && params.page_index) || 1);
+
   const markdownFiles = fs.readdirSync(path.join("posts"));
 
   const blogPosts = markdownFiles.map((filename) => {
@@ -63,7 +68,17 @@ export async function getStaticProps() {
     };
   });
 
+  const numPages = Math.ceil(markdownFiles.length / POSTS_PER_PAGE);
+  const pageIndex = page - 1;
+
+  // Sort the posts before sending as props
+  const orderedPosts = blogPosts
+    .sort(sortByDate)
+    .slice(pageIndex * POSTS_PER_PAGE, (pageIndex + 1) * POSTS_PER_PAGE);
+
   return {
-    props: { blogPosts: blogPosts.sort(sortByDate) },
+    props: { blogPosts: orderedPosts },
+    numPages,
+    currentPage: page,
   };
 }
