@@ -16,9 +16,17 @@ export default function Pagination({ currentPage, numPages }) {
       <ul className="flex pl-0 list-none my-2">
         {/* Only show previous link if current page is not the first */}
         {!isFirstPage && (
-          <Link href={previousPage}>
+          <Link href={previousPageLink}>
             <li className="relative block py-2 px-3 leading-tight bg-white border border-gray-300 text-gray-800 mr-1 hover:bg-gray-200 cursor-pointer">
               Previous
+            </li>
+          </Link>
+        )}
+        {/* Only show next link if current page is not the last */}
+        {!isLastPage && (
+          <Link href={nextPageLink}>
+            <li className="relative block py-2 px-3 leading-tight bg-white border border-gray-300 text-gray-800 mr-1 hover:bg-gray-200 cursor-pointer">
+              Next
             </li>
           </Link>
         )}
