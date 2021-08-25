@@ -22,6 +22,14 @@ export default function Pagination({ currentPage, numPages }) {
             </li>
           </Link>
         )}
+        {/* Show page numbers to allow user to click into individual pages */}
+        {Array.from({ length: numPages }, (_, i) => (
+          <Link href={`/blog/page/${i + 1}`}>
+            <li className="relative block py-2 px-3 leading-tight bg-white border border-gray-300 text-gray-800 mr-1 hover:bg-gray-200 cursor-pointer">
+              {i + 1}
+            </li>
+          </Link>
+        ))}
         {/* Only show next link if current page is not the last */}
         {!isLastPage && (
           <Link href={nextPageLink}>
