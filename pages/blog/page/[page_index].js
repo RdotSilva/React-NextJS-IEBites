@@ -77,8 +77,6 @@ export async function getStaticProps({ params }) {
     .slice(pageIndex * POSTS_PER_PAGE, (pageIndex + 1) * POSTS_PER_PAGE);
 
   return {
-    props: { blogPosts: orderedPosts },
-    numPages,
-    currentPage: page,
+    props: { blogPosts: orderedPosts, numPages, currentPage: page },
   };
 }
