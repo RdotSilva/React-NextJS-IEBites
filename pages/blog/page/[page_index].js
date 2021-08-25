@@ -5,11 +5,12 @@ import matter from "gray-matter";
 import Post from "../../../components/Post";
 import { sortByDate } from "../../../utils";
 import { POSTS_PER_PAGE } from "../../../config";
+import Pagination from "../../../components/Pagination";
 
 /**
  * Main Blog component used to show all blog posts
  */
-export default function BlogPage({ blogPosts }) {
+export default function BlogPage({ blogPosts, numPages, currentPage }) {
   return (
     <Layout>
       <h1 className="text-5xl border-b-4 p-5 font-bold">Blog</h1>
@@ -18,6 +19,8 @@ export default function BlogPage({ blogPosts }) {
           <Post key={index} post={post} />
         ))}
       </div>
+
+      <Pagination currentPage={currentPage} numPages={numPages} />
     </Layout>
   );
 }
