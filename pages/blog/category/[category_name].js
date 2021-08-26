@@ -80,6 +80,8 @@ export async function getStaticProps({ params: { category_name } }) {
 
   console.log(categoryPosts);
 
+  // TODO: Fix props bug with categoryPosts, posts don't seem to be loading into props
+
   return {
     props: {
       categoryPosts: categoryPosts.sort(sortByDate).slice(0, 6),
