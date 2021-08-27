@@ -3,6 +3,7 @@ import path from "path";
 import Layout from "@/components/Layout";
 import matter from "gray-matter";
 import { sortByDate } from "@/utils/index";
+import Post from "@/components/Post";
 
 export default function CategoryBlogPage({ categoryPosts, categoryName }) {
   return (
@@ -15,7 +16,7 @@ export default function CategoryBlogPage({ categoryPosts, categoryName }) {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {categoryPosts.map((post, index) => (
-              <div key={index}>{post.title}</div>
+              <Post key={index} post={post} />
             ))}
           </div>
         </div>
@@ -78,13 +79,9 @@ export async function getStaticProps({ params: { category_name } }) {
     (post) => post.frontmatter.category.toLowerCase() === category_name
   );
 
-  console.log(categoryPosts);
-
-  // TODO: Fix props bug with categoryPosts, posts don't seem to be loading into props
-
   return {
     props: {
-      categoryPosts: categoryPosts.sort(sortByDate).slice(0, 6),
+      categoryPosts: categoryPosts.sort(sortByDate),
       categoryName: category_name,
     },
   };
