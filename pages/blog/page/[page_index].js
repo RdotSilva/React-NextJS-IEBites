@@ -9,7 +9,12 @@ import { getPosts } from "@/lib/posts";
 /**
  * Main Blog component used to show all blog posts
  */
-export default function BlogPage({ blogPosts, numPages, currentPage }) {
+export default function BlogPage({
+  blogPosts,
+  numPages,
+  currentPage,
+  categories,
+}) {
   return (
     <Layout>
       <h1 className="text-5xl border-b-4 p-5 font-bold">Blog</h1>
@@ -50,11 +55,18 @@ export async function getStaticPaths() {
  * Parse markdown files into blog posts objects and adds blog posts to props
  */
 export async function getStaticProps({ params }) {
-  const page = parseInt((params && params.page_index) || 1);
   const markdownFiles = fs.readdirSync(path.join("posts"));
   const blogPosts = getPosts();
+
+  // Pagination
+  const page = parseInt((params && params.page_index) || 1);
   const numPages = Math.ceil(markdownFiles.length / POSTS_PER_PAGE);
   const pageIndex = page - 1;
+
+  // Get categories for sidebar
+  const categories = blogPosts.map((post) => post.frontmatter.categories);
+
+  const uniqueCategories = [...new Set(categories)];
 
   // Sort the posts before sending as props
   const orderedPosts = blogPosts.slice(
@@ -63,6 +75,11 @@ export async function getStaticProps({ params }) {
   );
 
   return {
-    props: { blogPosts: orderedPosts, numPages, currentPage: page },
+    props: {
+      blogPosts: orderedPosts,
+      numPages,
+      currentPage: page,
+      categories: uniqueCategories,
+    },
   };
 }
