@@ -58,6 +58,10 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params: { category_name } }) {
   const blogPosts = getPosts();
 
+  // Get categories for sidebar
+  const categories = blogPosts.map((post) => post.frontmatter.category);
+  const uniqueCategories = [...new Set(categories)];
+
   // Filter posts by category
   const categoryPosts = blogPosts.filter(
     (post) => post.frontmatter.category.toLowerCase() === category_name
@@ -67,6 +71,7 @@ export async function getStaticProps({ params: { category_name } }) {
     props: {
       categoryPosts: categoryPosts,
       categoryName: category_name,
+      categories: uniqueCategories,
     },
   };
 }
