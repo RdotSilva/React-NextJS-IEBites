@@ -3,9 +3,14 @@ import path from "path";
 import matter from "gray-matter";
 import Layout from "@/components/Layout";
 import Post from "@/components/Post";
+import CategoryList from "@/components/CategoryList";
 import { getPosts } from "@/lib/posts";
 
-export default function CategoryBlogPage({ categoryPosts, categoryName }) {
+export default function CategoryBlogPage({
+  categoryPosts,
+  categoryName,
+  categories,
+}) {
   return (
     <Layout>
       <div className="flex justify-between">
@@ -19,6 +24,10 @@ export default function CategoryBlogPage({ categoryPosts, categoryName }) {
               <Post key={index} post={post} />
             ))}
           </div>
+        </div>
+
+        <div className="w-1/4">
+          <CategoryList categories={categories} />
         </div>
       </div>
     </Layout>
