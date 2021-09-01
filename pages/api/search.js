@@ -9,7 +9,8 @@ export default function handler(req, res) {
   let blogPosts;
 
   if (process.env.NODE_ENV === "production") {
-    //TODO: Fetch from cache
+    // Fetch data from the cache
+    blogPosts = require("../../cache/data").posts;
   } else {
     const markdownFiles = fs.readdirSync(path.join("posts"));
 
