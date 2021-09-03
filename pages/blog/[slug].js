@@ -5,9 +5,18 @@ import marked from "marked";
 import Link from "next/link";
 import Layout from "@/components/Layout";
 import CategoryLabel from "@/components/CategoryLabel";
+import Rating from "@/components/Rating";
 
 export default function PostPage({
-  frontmatter: { title, category, date, cover_image, author, author_image },
+  frontmatter: {
+    title,
+    category,
+    date,
+    cover_image,
+    author,
+    author_image,
+    rating,
+  },
   content,
   slug,
 }) {
@@ -20,6 +29,7 @@ export default function PostPage({
           <CategoryLabel>{category}</CategoryLabel>
         </div>
         <img src={cover_image} alt="" className="w-full rounded" />
+        <Rating rating={rating} />
         <div className="flex justify-between items-center bg-gray-100 p-2 my-8">
           <div className="flex items-center">
             <img
