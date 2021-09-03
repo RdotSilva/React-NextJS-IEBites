@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import CategoryLabel from "./CategoryLabel";
+import Rating from "./Rating";
 
 export default function Post({ post, compact }) {
   return (
@@ -14,13 +15,15 @@ export default function Post({ post, compact }) {
           className="mb-4 rounded"
         />
       )}
-
       <div className="flex justify-between items-center">
         <span className="font-light text-gray-600">
           {post.frontmatter.date}
         </span>
         <CategoryLabel>{post.frontmatter.category}</CategoryLabel>
       </div>
+      {/* //TODO: Fix hard coded rating, this isn't working for some reason, look in
+      to it */}
+      <Rating rating={5} />
       <div className="mt-2">
         <Link href={`/blog/${post.slug}`}>
           <a className="text-2xl text-gray-700 font-bold hover:underline">
