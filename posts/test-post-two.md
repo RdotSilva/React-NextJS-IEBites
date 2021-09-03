@@ -1,11 +1,12 @@
 ---
-title: 'Test Post 2'
-date: 'April 1, 2021'
-excerpt: 'Testing Post 2'
-cover_image: '/images/posts/img.jpg'
-category: 'food'
-author: 'John Doe'
-author_image: 'https://randomuser.me/api/portraits/men/12.jpg'
+title: "Test Post 2"
+date: "April 1, 2021"
+excerpt: "Testing Post 2"
+cover_image: "/images/posts/img.jpg"
+category: "food"
+author: "John Doe"
+author_image: "https://randomuser.me/api/portraits/men/12.jpg"
+rating: 5
 ---
 
 <!-- Markdow generator - https://jaspervdj.be/lorem-markdownum/ -->

@@ -6,6 +6,7 @@ cover_image: '/images/posts/img.jpg'
 category: 'food'
 author: 'John Doe'
 author_image: 'https://randomuser.me/api/portraits/men/12.jpg'
+rating: 1
 ---
 
 <!-- Markdow generator - https://jaspervdj.be/lorem-markdownum/ -->
