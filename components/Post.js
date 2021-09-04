@@ -21,9 +21,7 @@ export default function Post({ post, compact }) {
         </span>
         <CategoryLabel>{post.frontmatter.category}</CategoryLabel>
       </div>
-      {/* //TODO: Fix hard coded rating, this isn't working for some reason, look in
-      to it */}
-      <Rating rating={5} />
+      <Rating rating={post.frontmatter.rating} />
       <div className="mt-2">
         <Link href={`/blog/${post.slug}`}>
           <a className="text-2xl text-gray-700 font-bold hover:underline">
