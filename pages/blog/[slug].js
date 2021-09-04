@@ -29,7 +29,9 @@ export default function PostPage({
           <CategoryLabel>{category}</CategoryLabel>
         </div>
         <img src={cover_image} alt="" className="w-full rounded" />
-        <Rating rating={rating} />
+        <div className="mt-6 ml-6">
+          <Rating rating={rating} />
+        </div>
         <div className="flex justify-between items-center bg-gray-100 p-2 my-8">
           <div className="flex items-center">
             <img
