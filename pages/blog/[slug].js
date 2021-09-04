@@ -41,6 +41,7 @@ export default function PostPage({
             />
             <h4>{author}</h4>
           </div>
+          {/* TODO: Add "days ago into the date using moment" */}
           <div className="mr-4">{date}</div>
         </div>
         <div className="blog-text mt-2">
